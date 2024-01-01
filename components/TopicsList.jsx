@@ -3,8 +3,10 @@ import RemoveBtn from "./RemoveBtn";
 import { HiPencilAlt } from "react-icons/hi";
 
 const getTopics = async () => {
+  const apiUrl = process.env.API_URL;
+
   try {
-    const res = await fetch("http://localhost:3000/api/topics", {
+    const res = await fetch(`${apiUrl}/api/topics`, {
       cache: "no-store",
     });
 
@@ -29,8 +31,9 @@ export default async function TopicsList() {
           className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start"
         >
           <div>
-            <h2 className="font-bold text-2xl">{t.title}</h2>
-            <div>{t.description}</div>
+            <h2 className="font-bold text-2xl margin bottom 100px">{t.nama}</h2>
+            <div>{t.nim}</div>
+            <div>{t.jurusan}</div>
           </div>
 
           <div className="flex gap-2">

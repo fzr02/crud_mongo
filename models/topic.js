@@ -2,8 +2,14 @@ import mongoose, { Schema } from "mongoose";
 
 const topicSchema = new Schema(
   {
-    title: String,
-    description: String,
+    nama: String,
+    nim: String,
+    angkatan: String,
+    jurusan : String,
+    fakultas : String,
+    email : String,
+    nowa : String,    
+    
   },
   {
     timestamps: true,

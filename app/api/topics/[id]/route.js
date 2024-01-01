@@ -4,10 +4,25 @@ import { NextResponse } from "next/server";
 
 export async function PUT(request, { params }) {
   const { id } = params;
-  const { newTitle: title, newDescription: description } = await request.json();
+  const { 
+    newNama: nama, 
+    newNim: nim, 
+    newAngkatan: angkatan, 
+    newJurusan: jurusan, 
+    newFakultas: fakultas, 
+    newEmail : email, 
+    newNowa: nowa,  
+  } = await request.json();
   await connectMongoDB();
-  await Topic.findByIdAndUpdate(id, { title, description });
-  return NextResponse.json({ message: "Topic updated" }, { status: 200 });
+  await Topic.findByIdAndUpdate(id, { 
+    nama, 
+    nim , 
+    angkatan, 
+    jurusan, 
+    fakultas, 
+    email, 
+    nowa});
+  return NextResponse.json({ message: "data updated" }, { status: 200 });
 }
 
 export async function GET(request, { params }) {
