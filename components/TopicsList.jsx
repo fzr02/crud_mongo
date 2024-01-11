@@ -17,10 +17,11 @@ const getTopics = async () => {
     return res.json();
   } catch (error) {
     console.log("Error loading topics: ", error);
+    return { topics: [] };
   }
 };
 
-export default async function TopicsList() {
+const TopicsList = async () => {
   const { topics } = await getTopics();
 
   return (
@@ -29,7 +30,6 @@ export default async function TopicsList() {
         <div
           key={t._id}
           className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start"
-
         >
           <div>
             <h2 className="font-bold text-2xl margin bottom 100px">{t.nama}</h2>
@@ -40,8 +40,6 @@ export default async function TopicsList() {
             <div>{t.email}</div>
             <div>{t.nowa}</div>
           </div>
-
-
 
           <div className="flex gap-2">
             <RemoveBtn id={t._id} />
@@ -55,3 +53,4 @@ export default async function TopicsList() {
   );
 }
 
+export default TopicsList;
